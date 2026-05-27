@@ -9,8 +9,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        submodules: recursive
+
+    - name: Install dependencies
+      run: |
+        git clone https://github.com/nlohmann/json.git third_party/nlohmann
+        git clone https://github.com/ToruNiina/toml11.git third_party/toml11
+        git clone https://github.com/mackron/miniaudio.git third_party/miniaudio
 
     - name: Setup MSVC
       uses: ilammy/msvc-dev-cmd@v1
